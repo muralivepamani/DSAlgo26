@@ -1,12 +1,7 @@
-import slidingwindow.MergeSort
-import slidingwindow.MergeTwoSortedArrays
+import twopointers.TwoSumTwo
 
 fun main() {
-
-    val a = intArrayOf(5, 7, 9)
-    val b = intArrayOf(1, 3, 4)
-
-
-    MergeTwoSortedArrays().mergeAndSort(a,b)
+   val result = TwoSumTwo().twoSum(intArrayOf(2,7,11,15),9)
+    println(result.joinToString(", "))
 }
 

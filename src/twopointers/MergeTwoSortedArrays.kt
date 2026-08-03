@@ -1,4 +1,4 @@
-package slidingwindow
+package twopointers
 
 class MergeTwoSortedArrays {
 
