@@ -1,7 +1,7 @@
-import twopointers.TwoSumTwo
+import twopointers.Container
 
 fun main() {
-   val result = TwoSumTwo().twoSum(intArrayOf(2,7,11,15),9)
-    println(result.joinToString(", "))
+   val result = Container().maxArea(intArrayOf(1,8,6,2,5,4,8,3,7))
+    println(result)
 }
 
