@@ -1,97 +1,69 @@
 package slidingwindow
 
 class MergeSort {
+    /** val array= intArrayOf(8, 3, 1, 7, 0, 10, 2)
 
+    val mergeSort= MergeSort()
+    mergeSort.sort(array,0,array.lastIndex)
+    println(array.joinToString(", "))*/
     fun sort(array: IntArray, left: Int, right: Int) {
 
-        // Base condition:
-        // If left and right point to the same element,
-        // the array part is already sorted.
-        // No need to divide further.
+        // Stop when subarray has one element or no elements
         if (left >= right) return
 
-        // Find middle index.
-        // This avoids integer overflow compared to (left + right) / 2
+        // Calculate middle index to divide array into two halves
         val mid = left + (right - left) / 2
 
-        // Divide left half
-        // Example: [5,7,9,1,3,4]
-        // Left part -> [5,7,9]
+        // Sort left half
         sort(array, left, mid)
 
-        // Divide right half
-        // Right part -> [1,3,4]
+        // Sort right half
         sort(array, mid + 1, right)
 
-        // Once both halves are sorted,
-        // combine them into one sorted array.
+        // Merge two sorted halves
         merge(array, left, mid, right)
     }
 
-
     fun merge(array: IntArray, left: Int, mid: Int, right: Int) {
 
-        // Temporary array stores sorted values
-        // Size is the total number of elements between left and right indexes.
+        // Create temporary array to store merged sorted values
         val temp = IntArray(right - left + 1)
 
-        // i points to left sorted subarray
+        // Pointer for left sorted half
         var i = left
 
-        // j points to right sorted subarray
+        // Pointer for right sorted half
         var j = mid + 1
 
-        // k tracks position in temporary array
+        // Pointer for temporary array
         var k = 0
 
-
-        // Compare elements from both sorted halves.
-        // Decision:
-        // If left element is smaller, put it first.
-        // Otherwise put right element first.
+        // Compare both halves until one side is exhausted
         while (i <= mid && j <= right) {
 
+            // Choose left element if it is smaller or equal
             if (array[i] <= array[j]) {
 
-                // Left side element is smaller or equal,
-                // so it maintains sorted order.
-                temp[k] = array[i]
-                i++
+                temp[k++] = array[i++]
 
             } else {
 
-                // Right side element is smaller,
-                // so it should come before left element.
-                temp[k] = array[j]
-                j++
+                // Choose right element if it is smaller
+                temp[k++] = array[j++]
             }
-
-            k++
         }
 
-
-        // If left half still has remaining elements,
-        // copy them because they are already sorted.
+        // Copy remaining elements from left half
         while (i <= mid) {
-
-            temp[k] = array[i]
-            i++
-            k++
+            temp[k++] = array[i++]
         }
 
-
-        // If right half still has remaining elements,
-        // copy them because they are already sorted.
+        // Copy remaining elements from right half
         while (j <= right) {
-
-            temp[k] = array[j]
-            j++
-            k++
+            temp[k++] = array[j++]
         }
 
-
-        // Copy sorted temporary array back into original array.
-        // This updates the current range [left..right].
+        // Replace original range with sorted values
         for (index in temp.indices) {
             array[left + index] = temp[index]
         }

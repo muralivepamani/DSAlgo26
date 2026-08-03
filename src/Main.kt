@@ -1,11 +1,12 @@
 import slidingwindow.MergeSort
+import slidingwindow.MergeTwoSortedArrays
 
 fun main() {
-    val array= intArrayOf(8, 3, 1, 7, 0, 10, 2)
 
-    val mergeSort= MergeSort()
-    mergeSort.sort(array,0,array.lastIndex)
-    println(array.joinToString(", "))
+    val a = intArrayOf(5, 7, 9)
+    val b = intArrayOf(1, 3, 4)
 
+
+    MergeTwoSortedArrays().mergeAndSort(a,b)
 }
 
