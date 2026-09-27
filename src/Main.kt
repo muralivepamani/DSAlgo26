@@ -1,23 +1,17 @@
-import common.printLinkedList
-import fastslowpointers.ListNode
-import reversallinkedlist.`Reverse Linked List`
-import reversallinkedlist.`Reverse Linked List II`
-import reversallinkedlist.`Reverse Nodes in k-Group`
-import stackqueue.`Daily Temperatures`
-import stackqueue.`Largest Rectangle in Histogram`
-import stackqueue.`Next Greater Element I`
-
-// Helper function to print linked list nodes in "1 -> 2 -> 3" format
-
+import practice.LRUCache
 
 fun main() {
 
-        val solution = `Largest Rectangle in Histogram`()
-        val input=intArrayOf(2,1,5,6,2,3)
-        println(input.joinToString())
-        val result = solution.largestRectangleArea(input)
+  val cache = LRUCache(2)
 
-        // Prints the result array: [1, 1, 4, 2, 1, 1, 0, 0]
-        println(result)
+  cache.put(1, 100)
+  cache.put(2, 200)
 
+  println(cache.get(1))
+
+  cache.put(3, 300)
+
+  println(cache.get(1))
+  println(cache.get(2))
+  println(cache.get(3))
 }
