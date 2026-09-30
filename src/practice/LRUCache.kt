@@ -53,16 +53,23 @@ class LRUCache(private val capacity: Int) {
     fun remove(node: Node) {
 
         // H <-> A <-> B <-> C <-> T
-        // Remove B
-        //
-        // A.next = B.next
-        // C.prev = B.prev
-
+        //           Remove B
+        // B's previous node = A
+        // B's next node     = C
         val prev = node.prev!!
         val next = node.next!!
 
+        // Connect A directly to C
+        // A.next = B.next
         prev.next = next
+
+        // Connect C directly back to A
+        // C.prev = B.prev
         next.prev = prev
+
+        // Result:
+        // H <-> A <-> C <-> T
+        // B is removed from the linked list
     }
 
     fun addToEnd(node: Node) {
